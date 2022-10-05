@@ -1,11 +1,13 @@
 #futuramente melhorar a tela de login com comprimento de senha
 import os
 import time
-from funcoes_banco import escreve_tela
-from funcoes_banco import procura_user
+from funcoes_banco import escreve_tela, procura_user, carregar_contas
 
 #dados do usuario local
 login_usuarios = {'login':'queiroz', 'senha':1234}
+#carregando as contas dos usuarios
+pessoas = carregar_contas()
+
 
 def tela_login():
     cont = 0
@@ -22,21 +24,20 @@ def tela_login():
                 break
             
             else:
-                procura_user(usuario,senha)
-                
+                bool = procura_user(pessoas,usuario,senha)
+                if bool == False:
+                    print('\033[31mfavor digitar login e senha corretamente!\033[m')
+                    cont += 1
+                    if cont == 3:
+                        print('ATÉ BREVE....')
+                        break 
+
         except ValueError:
             print('digite apenas texto sem caracter especiais.')
             continue
         except KeyboardInterrupt:
             print('-- ATÉ LOGO! --')
             break
-
-
-""" print('\033[31mfavor digitar login e senha corretamente!\033[m')
-                cont += 1
-                if cont == 3:
-                    print('ATÉ BREVE....')
-                    break """
 
 
 tela_login()

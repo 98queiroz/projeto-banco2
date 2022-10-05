@@ -1,8 +1,8 @@
-from typing import list,Dict
-
+from typing import List, Dict
 from banco import carregar_contas
 
 pessoas = carregar_contas()
+
 def escreve_tela(gerente=False, cliente=False):
     if gerente == True:
         print()
@@ -27,7 +27,18 @@ def escreve_tela(gerente=False, cliente=False):
         print('0 - sair')
         print()
     
-def deserializador():
+def procura_user(pessoas: List[Dict[str,str]], usuario:str, senha:int)-> dict[str,str]:
+    for user in pessoas:
+        print
+        """ if usuario == user['login'] and senha == user['password']:
+            print(f"\033[36mBem vindo Cliente: {usuario['login']}\033[m")
+            escreve_tela(cliente=True)
+        else:
+            return False """
+
+c = carregar_contas()
+procura_user(c,'matheus',1234)
+
 
 
 def abrir_conta():...
